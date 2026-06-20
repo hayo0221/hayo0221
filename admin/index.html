@@ -122,6 +122,7 @@
         <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="6">토</label>
       </div>
       <div class="form-field"><label class="input-label">요일 카드에 표시할 시간</label><input class="input" id="f-days_time" type="text" placeholder="12:00" style="max-width:160px"></div>
+      <div class="form-field"><label class="input-label">방송 안내 문구 (요일 카드 밑 한 줄)</label><input class="input" id="f-sched_note" type="text" placeholder="오후 12시 방송 · 요일은 자유롭게 조정 가능"></div>
       <input type="hidden" id="f-days">
       <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveDays()">저장 ♥</button></div>
     </div>
@@ -375,7 +376,7 @@
   const profileKeys = [
     'avatar','soop-id',
     'info-name','info-fandom','tagline','info-catchphrase','concept','info-tags',
-    'birthday','info-dates','agency','sing','airtime','days_time',
+    'birthday','info-dates','agency','sing','airtime','days_time','sched_note',
     'like1','like2','like3','like4','dislike1','dislike2','days','vod',
     'link-soop','link-youtube','link-twitter'
   ];

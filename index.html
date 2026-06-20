@@ -179,7 +179,7 @@ footer{text-align:center;color:var(--text-soft);font-size:12px;margin-top:24px;p
   <div class="sched">
     <div class="sh">📅 방송 일정</div>
     <div class="daycards" id="daycards"></div>
-    <div class="cap">🕛 <span id="cap-airtime">오후 12시</span> 방송 · 요일은 자유롭게 조정 가능</div>
+    <div class="cap">🕛 <span id="sched-note">오후 12시 방송 · 요일은 자유롭게 조정 가능</span></div>
   </div>
 
   <div class="twocol">
@@ -240,7 +240,7 @@ const defaults={ 'soop-id':'hayodayong', avatar:'',
  'info-catchphrase':'하잎이를 세상에서 제일 사랑하는 하요',
  concept:'해맑고 조금 바보같지만 누구보다 귀여운 개인세 토끼 버추얼!',
  'info-tags':'소통, 종겜, 마크', 'info-fandom':'하잎이', 'info-dates':'2026.04.11',
- birthday:'02-21', agency:'개인세', sing:'가끔', airtime:'오후 12시',
+ birthday:'02-21', agency:'개인세', sing:'가끔', airtime:'오후 12시', sched_note:'오후 12시 방송 · 요일은 자유롭게 조정 가능',
  days:'0,1,2,3,4,5,6', days_time:'12:00', vod:'',
  like1:'하잎이', like2:'맛있는 거', like3:'귀여운 거', like4:'',
  dislike1:'무서운 거', dislike2:'징그러운 거',
@@ -266,7 +266,7 @@ async function load(){
   setText('info-dates', d['info-dates']);
   setText('info-agency', d['agency']);
   setText('info-birthday', (d['birthday']||'').replace(/-/g,'.'));
-  setText('mi-airtime', d['airtime']); setText('cap-airtime', d['airtime']);
+  setText('mi-airtime', d['airtime']); setText('sched-note', d['sched_note']);
   setText('mi-sing', d['sing']);
   setHref('soc-soop', d['link-soop']); setHref('soc-youtube', d['link-youtube']); setHref('soc-twitter', d['link-twitter']);
   const tg=document.getElementById('info-tags'); if(tg)tg.innerHTML=(d['info-tags']||'').split(',').filter(t=>t.trim()).map(t=>`<span class="pill">${t.trim()}</span>`).join('');
