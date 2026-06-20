@@ -126,7 +126,7 @@ a.nav-logo {
 .nav a {
   padding: 18px 18px;
   font-size: 15px; font-weight: 500;
-  color: var(--text-soft);
+  color: var(--text-mid);
   text-decoration: none;
   border-bottom: 2.5px solid transparent;
   transition: color var(--transition), border-color var(--transition);
@@ -161,7 +161,7 @@ a.nav-logo {
 
 .card-title {
   font-size: 12px; font-weight: 700;
-  color: var(--main);
+  color: var(--main-dark);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -256,7 +256,7 @@ tr:hover td { background: var(--main-light); }
 .input-label {
   display: block;
   font-size: 11px; font-weight: 600;
-  color: var(--main); letter-spacing: 0.08em;
+  color: var(--main-dark); letter-spacing: 0.08em;
   margin-bottom: 5px; text-transform: uppercase;
 }
 .form-field { margin-bottom: 12px; }
@@ -333,7 +333,7 @@ tr:hover td { background: var(--main-light); }
   display: flex; align-items: center; justify-content: center;
 }
 .page-btn:hover, .page-btn.active {
-  background: var(--main); color: #fff;
+  background: var(--main); color: #2f4d10;
   border-color: var(--main);
 }
 
