@@ -340,7 +340,7 @@ tr:hover td { background: var(--main-light); }
 /* ── 푸터 ── */
 footer {
   text-align: center; padding: 24px;
-  font-size: 12px; color: var(--main-light);
+  font-size: 12px; color: var(--text-soft); line-height: 1.7;
   position: relative; z-index: 1;
 }
 
