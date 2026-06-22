@@ -112,18 +112,17 @@
 
     <div class="card">
       <div class="card-title">📅 방송 요일 · 시간</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px" id="day-checks">
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="0">일</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="1">월</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="2">화</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="3">수</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="4">목</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="5">금</label>
-        <label style="display:flex;align-items:center;gap:4px;font-size:14px"><input type="checkbox" class="day-chk" value="6">토</label>
+      <div style="font-size:12px;color:var(--text-soft);margin-bottom:8px">요일별 시간 (최대 3개) · 비우면 그 줄은 안 뜸 / 한 요일을 다 비우면 <b>휴방</b></div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">일</span><input class="input" id="dt-0-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-0-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-0-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">월</span><input class="input" id="dt-1-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-1-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-1-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">화</span><input class="input" id="dt-2-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-2-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-2-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">수</span><input class="input" id="dt-3-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-3-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-3-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">목</span><input class="input" id="dt-4-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-4-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-4-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">금</span><input class="input" id="dt-5-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-5-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-5-2" type="text" placeholder="--:--" style="max-width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:24px;font-weight:700;color:var(--main-dark);flex-shrink:0">토</span><input class="input" id="dt-6-0" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-6-1" type="text" placeholder="--:--" style="max-width:88px"><input class="input" id="dt-6-2" type="text" placeholder="--:--" style="max-width:88px"></div>
       </div>
-      <div class="form-field"><label class="input-label">요일 카드에 표시할 시간</label><input class="input" id="f-days_time" type="text" placeholder="12:00" style="max-width:160px"></div>
       <div class="form-field"><label class="input-label">방송 안내 문구 (요일 카드 밑 한 줄)</label><input class="input" id="f-sched_note" type="text" placeholder="오후 12시 방송 · 요일은 자유롭게 조정 가능"></div>
-      <input type="hidden" id="f-days">
       <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveDays()">저장 ♥</button></div>
     </div>
 
@@ -371,13 +370,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="../supabase.js"></script>
 <script>
-  const ADMIN_PASSWORD = 'Nana@4560';
+  const ADMIN_PASSWORD = '1234';
 
   const profileKeys = [
     'avatar','soop-id',
     'info-name','info-fandom','tagline','info-catchphrase','concept','info-tags',
-    'birthday','info-dates','agency','sing','airtime','days_time','sched_note',
-    'like1','like2','like3','like4','dislike1','dislike2','days','vod',
+    'birthday','info-dates','agency','sing','airtime','sched_note',
+    'like1','like2','like3','like4','dislike1','dislike2','vod',
     'link-soop','link-youtube','link-twitter'
   ];
 
@@ -407,9 +406,10 @@
       if (rows && rows.length > 0 && rows[0].data) saved = rows[0].data;
     } catch(e) {}
     profileKeys.forEach(k => { const el = document.getElementById('f-' + k); if (el) el.value = saved[k] || ''; });
-    // 방송 요일 체크박스
-    const days = (saved.days || '').split(',').map(x=>x.trim());
-    document.querySelectorAll('.day-chk').forEach(c => { c.checked = days.includes(c.value); });
+    // 요일별 시간 (day_times) — 없으면 옛 days/days_time에서 변환
+    let dt = saved.day_times;
+    if (!dt || typeof dt !== 'object') { dt = {}; const on = new Set((saved.days||'').split(',').map(x=>x.trim()).filter(x=>x!=='')); for (let i=0;i<7;i++) dt[i] = on.has(String(i)) ? [saved.days_time||'12:00'] : []; }
+    for (let i=0;i<7;i++){ const arr = Array.isArray(dt[i]) ? dt[i] : []; for (let s=0;s<3;s++){ const el=document.getElementById('dt-'+i+'-'+s); if(el) el.value = (arr[s]||''); } }
     previewAvatar();
   }
   function soopAvatarUrl(id) {
@@ -427,9 +427,15 @@
     else { img.style.display = 'none'; if (ph) ph.style.display = 'flex'; }
   }
   async function saveDays() {
-    const days = [...document.querySelectorAll('.day-chk:checked')].map(c=>c.value).join(',');
-    document.getElementById('f-days').value = days;
-    await saveLocalProfile();
+    let saved = {};
+    try { const { data: rows } = await db.from('profile').select('data').eq('id', 1); if (rows && rows.length > 0 && rows[0].data) saved = rows[0].data; } catch(e) {}
+    const dt = {};
+    for (let i=0;i<7;i++){ dt[i] = [0,1,2].map(s=>{ const el=document.getElementById('dt-'+i+'-'+s); return el ? el.value.trim() : ''; }).filter(Boolean); }
+    saved['day_times'] = dt;
+    const sn = document.getElementById('f-sched_note'); if (sn) saved['sched_note'] = sn.value;
+    const { error } = await db.from('profile').upsert({ id: 1, data: saved });
+    if (error) { showToast('❌ 저장 실패: ' + error.message); return; }
+    showToast('✅ 저장됐어요!');
   }
   async function saveLocalProfile() {
     let saved = {};
