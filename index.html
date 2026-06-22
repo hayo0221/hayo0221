@@ -76,11 +76,11 @@ body.dark .lorebox.b{background:#2a2c18;color:#e3d79a;border-color:#3a3a1f}
 .sched .sh{font-family:var(--katuri);font-size:17px;color:var(--main-dark);margin-bottom:14px;display:flex;align-items:center;gap:8px;font-weight:400}
 .daycards{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
 @media(max-width:560px){.daycards{grid-template-columns:repeat(4,1fr)}}
-.dc{display:flex;align-items:center;gap:6px;border-radius:15px;padding:9px 11px;min-height:50px;background:var(--main-light)}
-.dc .dd{font-family:var(--katuri);font-size:17px;color:var(--main-dark);font-weight:400;flex-shrink:0}
-.dc .times{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;line-height:1.25}
-.dc .times .tt{font-size:10px;color:var(--main-dark)}
-.dc .rest{margin-left:auto;font-size:10px;color:var(--main-dark);opacity:.65}
+.dc{display:flex;align-items:center;justify-content:center;gap:9px;border-radius:15px;padding:9px 6px;min-height:48px;background:var(--main-light)}
+.dc .dd{font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:800;color:var(--main-dark);flex-shrink:0;letter-spacing:-.3px}
+.dc .times{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
+.dc .times .tt{font-size:11px;font-weight:700;color:var(--main-dark)}
+.dc .rest{font-size:11px;font-weight:700;color:var(--main-dark);opacity:.55}
 .dc.on{background:var(--main)}
 .dc.on .dd,.dc.on .times .tt{color:#2f4d10}
 .dc.off .dd{opacity:.5}
@@ -182,7 +182,7 @@ footer{text-align:center;color:var(--text-soft);font-size:12px;margin-top:24px;p
   <div class="sched">
     <div class="sh">📅 방송 일정</div>
     <div class="daycards" id="daycards"></div>
-    <div class="cap">🕛 <span id="sched-note">오후 12시 방송 · 요일은 자유롭게 조정 가능</span></div>
+    <div class="cap"><span id="sched-note">오후 12시 방송 · 요일은 자유롭게 조정 가능</span></div>
   </div>
 
   <div class="twocol">
