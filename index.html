@@ -168,7 +168,7 @@ footer{text-align:center;color:var(--text-soft);font-size:12px;margin-top:24px;p
       </div>
       <div class="infocards">
         <div class="ic"><div class="l">생일</div><div class="v"><span id="info-birthday">02.21</span><em id="dday"></em></div></div>
-        <div class="ic"><div class="l">데뷔</div><div class="v" id="info-dates">2026.04.11</div></div>
+        <div class="ic"><div class="l">데뷔</div><div class="v"><span id="info-dates">2026.04.11</span><em id="ddebut"></em></div></div>
         <div class="ic"><div class="l">소속</div><div class="v" id="info-agency">개인세</div></div>
         <div class="ic"><div class="l">팬닉</div><div class="v" id="info-fandom">하잎이</div></div>
       </div>
@@ -279,6 +279,7 @@ async function load(){
   const dn=['일','월','화','수','목','금','토']; const dbox=document.getElementById('daycards');
   if(dbox) dbox.innerHTML=dn.map((nm,i)=>{const ts=(Array.isArray(_dt[i])?_dt[i]:[]).map(t=>String(t).trim()).filter(Boolean).slice(0,3); return ts.length?`<div class="dc on"><div class="dd">${nm}</div><div class="times">${ts.map(t=>`<span class="tt">${t}</span>`).join('')}</div></div>`:`<div class="dc off"><div class="dd">${nm}</div><div class="rest">휴방</div></div>`;}).join('');
   (function(bmd){ if(!bmd) return; const t=String(bmd).split('-'); if(t.length<2)return; const m=+t[0],dd=+t[1]; const now=new Date();now.setHours(0,0,0,0); let nx=new Date(now.getFullYear(),m-1,dd); if(nx<now)nx=new Date(now.getFullYear()+1,m-1,dd); const n=Math.round((nx-now)/86400000); const el=document.getElementById('dday'); if(el)el.textContent=(n===0?'오늘!':'D-'+n); })(d['birthday']);
+  (function(ds){ if(!ds) return; const p=String(ds).split(/[^0-9]+/).filter(Boolean); if(p.length<3) return; const dt=new Date(+p[0],+p[1]-1,+p[2]); dt.setHours(0,0,0,0); const now=new Date(); now.setHours(0,0,0,0); const n=Math.round((now-dt)/86400000); const el=document.getElementById('ddebut'); if(el) el.textContent=(n===0?'데뷔일!':(n>0?'D+'+n:'D-'+(-n))); })(d['info-dates']);
   const vb=document.getElementById('vod-box');
   if(vb){ const vid=(d['vod']||'').trim();
     if(vid) vb.innerHTML=`<iframe src="https://vod.sooplive.co.kr/player/${vid}/embed?showChat=false&autoPlay=false&mutePlay=false" frameborder="0" allowfullscreen scrolling="no"></iframe>`;
