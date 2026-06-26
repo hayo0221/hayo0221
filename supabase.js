@@ -3,8 +3,8 @@
    ✅ 이 파일 상단 두 줄만 본인 값으로 교체!
    ============================================= */
 
-const SUPABASE_URL  = 'https://ajcmzyppnrvtrtwwvdhu.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY216eXBwbnJ2dHJ0d3d2ZGh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5NDk0MzQsImV4cCI6MjA5NzUyNTQzNH0.m1BADBmuP2EeL8Z0K_liLgwBDOePVAy996pCiFICMTc';
+const SUPABASE_URL  = 'https://evuszheracvnzjtbzxec.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2dXN6aGVyYWN2bnpqdGJ6eGVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxMDk5MjYsImV4cCI6MjA5NzY4NTkyNn0.uEGBJZnaGHXIysGePIs9i4UpRVkrsbRZUArmof2JL_s';
 
 // ── Supabase 클라이언트 초기화 ──
 const { createClient } = supabase;
@@ -32,7 +32,7 @@ async function fetchAll(table, options = {}) {
  */
 async function insertRow(table, row) {
   const { error } = await db.from(table).insert(row);
-  if (error) { console.error(`insertRow(${table}) 오류:`, error); return false; }
+  if (error) { console.error(`insertRow(${table}) 오류:`, error); window.__dbErr = error.message; return false; }
   return true;
 }
 
@@ -41,7 +41,7 @@ async function insertRow(table, row) {
  */
 async function deleteRow(table, id) {
   const { error } = await db.from(table).delete().eq('id', id);
-  if (error) { console.error(`deleteRow(${table}) 오류:`, error); return false; }
+  if (error) { console.error(`deleteRow(${table}) 오류:`, error); window.__dbErr = error.message; return false; }
   return true;
 }
 
@@ -50,7 +50,7 @@ async function deleteRow(table, id) {
  */
 async function updateRow(table, id, updates) {
   const { error } = await db.from(table).update(updates).eq('id', id);
-  if (error) { console.error(`updateRow(${table}) 오류:`, error); return false; }
+  if (error) { console.error(`updateRow(${table}) 오류:`, error); window.__dbErr = error.message; return false; }
   return true;
 }
 
@@ -94,11 +94,11 @@ async function uploadImage(file, folder = 'uploads') {
     const blob = await compressImage(file);
     const rand = Math.random().toString(36).slice(2, 8);
     const path = `${folder}/${Date.now()}_${rand}.jpg`;
-    const { error } = await db.storage.from('{{버킷이름}}').upload(path, blob, {
+    const { error } = await db.storage.from('images').upload(path, blob, {
       upsert: true, contentType: 'image/jpeg'
     });
     if (error) { console.error('uploadImage 오류:', error); return null; }
-    const { data } = db.storage.from('{{버킷이름}}').getPublicUrl(path);
+    const { data } = db.storage.from('images').getPublicUrl(path);
     return data?.publicUrl || null;
   } catch (e) {
     console.error('uploadImage 예외:', e);
